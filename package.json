@@ -1,0 +1,23 @@
+{
+  "name": "affiliate-window",
+  "version": "0.0.0",
+  "description": "A wrapper around the affiliate window product serve api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:adamvr/node-affiliate-window-lookup"
+  },
+  "keywords": [
+    "ecommerce",
+    "affiliate-window"
+  ],
+  "author": "Adam Rudd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adamvr/node-affiliate-window-lookup/issues"
+  },
+  "homepage": "https://github.com/adamvr/node-affiliate-window-lookup"
+}
