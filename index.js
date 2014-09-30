@@ -98,6 +98,9 @@ AffiliateWindow.prototype.request = function () {
   // Add keywords
   req.sQuery = this._keywords;
 
+  // Add limits
+  if (this._limit) req.iLimit = this._limit;
+
   // Add merchants
   if (this._merchants.length) refine.push(this.merchants());
 
