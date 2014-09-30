@@ -123,9 +123,6 @@ AffiliateWindow.prototype.merchants = function () {
   }
 };
 
-  function refineBy (m) {
-    return {
-      sId: m,
       sName: ''
     }
   }
