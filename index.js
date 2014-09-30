@@ -93,8 +93,14 @@ AffiliateWindow.prototype.merchants = function () {
   return {
     iId: 3,
     sName: 'Merchant',
-    oRefineByDefinition: _.map(this._merchants, refineBy)
+    oRefineByDefinition: _.map(this._merchants, function (x) {
+      return {
+        sId: x,
+        sName: ''
+      };
+    })
   }
+};
 
   function refineBy (m) {
     return {
