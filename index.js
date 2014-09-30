@@ -122,8 +122,3 @@ AffiliateWindow.prototype.merchants = function () {
     })
   }
 };
-
-      sName: ''
-    }
-  }
-};
