@@ -42,6 +42,37 @@ AffiliateWindow.prototype.done = function (cb) {
         sApiKey: that._id
       }
     });
-    client.getProductList({sQuery: that._keywords}, cb);
+    client.getProductList(that.request(), cb);
   });
+};
+
+AffiliateWindow.prototype.request = function () {
+  var req = {}
+    , refine = [];
+
+  // Add keywords
+  req.sQuery = this._keywords;
+
+  // Add merchants
+  if (this._merchants.length) refine.push(this.merchants());
+
+  // Add refine groups to the request
+  req.oActiveRefineByGroup = refine;
+
+  return req;
+};
+
+AffiliateWindow.prototype.merchants = function () {
+  return {
+    iId: 3,
+    sName: 'Merchant',
+    oRefineByDefinition: _.map(this._merchants, refineBy)
+  }
+
+  function refineBy (m) {
+    return {
+      sId: m,
+      sName: ''
+    }
+  }
 };
