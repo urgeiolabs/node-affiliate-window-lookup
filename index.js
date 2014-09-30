@@ -23,6 +23,15 @@ AffiliateWindow.prototype.id = function (id) {
   return this._id = id, this;
 };
 
+AffiliateWindow.prototype.limit = function (limit) {
+  return this._limit = limit, this;
+};
+
+AffiliateWindow.prototype.one = function (one) {
+  one = 'undefined' === typeof one ? true : !!one;
+  return this._one = one, this._limit = 1, this;
+};
+
 /**
  * AffiliateWindow#merchant - select merchants to search within
  * @param {String/Array} merchant - merchant or array of merchants to search within
