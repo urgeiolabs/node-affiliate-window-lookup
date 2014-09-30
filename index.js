@@ -17,8 +17,20 @@ var AffiliateWindow = module.exports = function AffiliateWindow (opts) {
   this._keywords = opts.keywords;
 };
 
+AffiliateWindow.prototype._merchants = [];
+
 AffiliateWindow.prototype.id = function (id) {
   return this._id = id, this;
+};
+
+/**
+ * AffiliateWindow#merchant - select merchants to search within
+ * @param {String/Array} merchant - merchant or array of merchants to search within
+ * @returns this
+ */
+AffiliateWindow.prototype.merchant = function (merchant) {
+  merchant = _.isArray(merchant) ? merchant : _.toArray(arguments);
+  return this._merchants = this._merchants.concat(merchant), this;
 };
 
 AffiliateWindow.prototype.done = function (cb) {
