@@ -42,7 +42,34 @@ AffiliateWindow.prototype.done = function (cb) {
         sApiKey: that._id
       }
     });
-    client.getProductList(that.request(), cb);
+    client.getProductList(that.request(), format(cb));
+  });
+};
+
+var format = function (cb) {
+  return function format (err, res) {
+    // Handle errors
+    if (err) return cb(err);
+
+    // Grab results or lack thereof
+    res = res.oProduct || [];
+
+    // Format results
+    res = formatResults(res);
+
+    return cb(null, res);
+  }
+};
+
+var formatResults = function (res) {
+  return _.map(res, function (x) {
+    return {
+      id: x.iId,
+      name: x.sName,
+      currency: 'GBP',
+      listPrice: x.fPrice,
+      url: x.sAwDeepLink
+    }
   });
 };
 
