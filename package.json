@@ -1,5 +1,5 @@
 {
-  "name": "affiliate-window",
+  "name": "affiliate-window-lookup",
   "version": "0.0.0",
   "description": "A wrapper around the affiliate window product serve api",
   "main": "index.js",
