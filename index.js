@@ -51,11 +51,14 @@ AffiliateWindow.prototype.done = function (cb) {
         sApiKey: that._id
       }
     });
-    client.getProductList(that.request(), format(cb));
+    client.getProductList(that.request(), format.call(that, cb));
   });
 };
 
 var format = function (cb) {
+  var one = this._one
+    , limit = this._limit;
+
   return function format (err, res) {
     // Handle errors
     if (err) return cb(err);
@@ -65,6 +68,12 @@ var format = function (cb) {
 
     // Format results
     res = formatResults(res);
+
+    if (one) {
+      res = _.first(res);
+    } else if (limit) {
+      res = _.first(res, limit);
+    }
 
     return cb(null, res);
   }
