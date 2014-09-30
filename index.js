@@ -70,7 +70,7 @@ var format = function (cb) {
     res = formatResults(res);
 
     if (one) {
-      res = _.first(res);
+      res = _.first(res) || null;
     } else if (limit) {
       res = _.first(res, limit);
     }
