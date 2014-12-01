@@ -42,6 +42,15 @@ AffiliateWindow.prototype.merchant = function (merchant) {
   return this._merchants = this._merchants.concat(merchant), this;
 };
 
+AffiliateWindow.prototype.price = function (price) {
+  price = _.isArray(price) ? price : price.split('..');
+
+  if (price[0]) this.minPrice = price[0];
+  if (price[1]) this.maxPrice = price[1];
+
+  return this;
+};
+
 AffiliateWindow.prototype.done = function (cb) {
   var that = this;
 
@@ -102,7 +111,10 @@ AffiliateWindow.prototype.request = function () {
   if (this._limit) req.iLimit = this._limit;
 
   // Add merchants
-  if (this._merchants.length) refine.push(this.merchants());
+  if (this._merchants.length) refine.push(this.genMerchants());
+
+  // Add prices
+  if (this._minPrice || this._maxPrice) refine.push(this.genPrices());
 
   // Add refine groups to the request
   req.oActiveRefineByGroup = refine;
@@ -110,7 +122,7 @@ AffiliateWindow.prototype.request = function () {
   return req;
 };
 
-AffiliateWindow.prototype.merchants = function () {
+AffiliateWindow.prototype.genMerchants = function () {
   return {
     iId: 3,
     sName: 'Merchant',
@@ -121,4 +133,18 @@ AffiliateWindow.prototype.merchants = function () {
       };
     })
   }
+};
+
+AffiliateWindow.prototype.genPrices = function () {
+  var min = this._minPrice || ''
+    , max = this._maxPrice || '';
+
+  return {
+    iId: 1,
+    sName: 'Price',
+    oRefineByDefinition: {
+      sId: min + '_' + max,
+      sName: ''
+    }
+  };
 };
