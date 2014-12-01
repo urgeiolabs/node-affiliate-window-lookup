@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:adamvr/node-affiliate-window-lookup"
+    "url": "git@github.com:urgeiolabs/node-affiliate-window-lookup"
   },
   "keywords": [
     "ecommerce",
@@ -17,9 +17,9 @@
   "author": "Adam Rudd",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/adamvr/node-affiliate-window-lookup/issues"
+    "url": "https://github.com/urgeiolabs/node-affiliate-window-lookup/issues"
   },
-  "homepage": "https://github.com/adamvr/node-affiliate-window-lookup",
+  "homepage": "https://github.com/urgeiolabs/node-affiliate-window-lookup",
   "dependencies": {
     "soap": "^0.5.1",
     "underscore": "^1.7.0"
